@@ -1,0 +1,59 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding = "16dp"
+    tools:context=".TriviaGame"
+    android:background="#ffffa0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:id="@+id/profileButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/username"
+            android:textSize="20sp"
+            android:id="@+id/username"
+            android:layout_below="@+id/profileButton"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/playButton"
+            android:textSize="40sp"
+            android:id="@+id/playButton"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClickPlayButton" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/leaderBoardButton"
+            android:textSize="32sp"
+            android:id="@+id/leaderBoardButton"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/submitQuestionButton"
+            android:textSize="32sp"
+            android:id="@+id/submitQuestionButton" />
+    </LinearLayout>
+</LinearLayout>
