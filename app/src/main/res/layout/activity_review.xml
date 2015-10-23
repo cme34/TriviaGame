@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding = "16dp"
+    tools:context=".ReviewScreen"
+    android:background="#ffffa0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/questionView"
+            android:textSize="24sp"
+            android:id="@+id/questionView"
+            android:layout_gravity="start" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/correctAnswerView"
+            android:textSize="24sp"
+            android:id="@+id/correctView"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/correctAnswerView"
+            android:textSize="24sp"
+            android:id="@+id/correctAnswerView"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/yourAnswerView"
+            android:textSize="24sp"
+            android:id="@+id/yourView"
+            android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#77ff77"
+            android:id="@+id/answerBackground" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/yourAnswerView"
+                android:textSize="24sp"
+                android:id="@+id/yourAnswerView"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:layout_gravity="center_horizontal" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/prevButton"
+                android:textSize="32sp"
+                android:id="@+id/prevButton"
+                android:layout_gravity="start"
+                android:onClick="onClickPrevButton" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/nextButton"
+                android:textSize="32sp"
+                android:id="@+id/nextButton"
+                android:layout_gravity="end"
+                android:onClick="onClickNextButton" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/okayButton"
+            android:textSize="32sp"
+            android:id="@+id/okayButton"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClickOkayButton" />
+    </LinearLayout>
+</LinearLayout>

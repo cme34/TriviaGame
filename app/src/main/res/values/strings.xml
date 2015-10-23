@@ -6,7 +6,7 @@
     <string name="username">username</string>
     <string name="playButton">PLAY</string>
     <string name="leaderBoardButton">LEADERBOARD</string>
-    <string name="submitQuestionButton">SUBMIT QUESTION</string>
+    <string name="quitButton">QUIT</string>
 
     <string name="timeView">TIME</string>
     <string name="timeLeftView">0</string>
@@ -20,4 +20,10 @@
     <string name="pointsView">Points</string>
     <string name="scoreView">0</string>
     <string name="okayButton">OKAY</string>
+    <string name="reviewButton">REVIEW</string>
+
+    <string name="prevButton">PREV</string>
+    <string name="nextButton">NEXT</string>
+    <string name="correctAnswerView">Correct Answer</string>
+    <string name="yourAnswerView">Your Answer</string>
 </resources>

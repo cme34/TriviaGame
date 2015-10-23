@@ -39,4 +39,13 @@
         android:layout_gravity="center_horizontal"
         android:onClick="onClickOkayButton" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/reviewButton"
+        android:textSize="32sp"
+        android:id="@+id/reviewButton"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClickReviewButton" />
 </LinearLayout>

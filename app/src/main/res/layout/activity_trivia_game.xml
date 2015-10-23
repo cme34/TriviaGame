@@ -52,8 +52,9 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:text="@string/submitQuestionButton"
+            android:text="@string/quitButton"
             android:textSize="32sp"
-            android:id="@+id/submitQuestionButton" />
+            android:id="@+id/quitButton"
+            android:onClick="onClickQuitButton" />
     </LinearLayout>
 </LinearLayout>
