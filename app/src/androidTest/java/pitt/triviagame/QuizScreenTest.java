@@ -45,8 +45,8 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
 
     @SmallTest
 
-    //if no answer is selected... then the submit button won't work
-    public void testThis(){
+    //if no answer is selected... then the submit button should not submit
+    public void testSubmitButton(){
         Intent mLaunchIntent = new Intent(getInstrumentation()
                 .getTargetContext(), QuizScreen.class);
         startActivity(mLaunchIntent, null, null);
