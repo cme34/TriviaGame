@@ -1,8 +1,14 @@
 package pitt.triviagame;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.ActivityUnitTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import junit.framework.TestCase;
@@ -10,10 +16,13 @@ import junit.framework.TestCase;
 import pitt.triviagame.R;
 import pitt.triviagame.QuizScreen;
 
+import static android.support.v4.app.ActivityCompat.startActivity;
+
 /**
  * Created by Danny on 10/11/2015.
  */
-public class QuizScreenTest extends ActivityInstrumentationTestCase2<QuizScreen>{
+public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
+    private RadioGroup answerButtonGroup;
 
     QuizScreen screen;
 
@@ -27,18 +36,33 @@ public class QuizScreenTest extends ActivityInstrumentationTestCase2<QuizScreen>
         screen = getActivity();
     }
 
+    /*
     @SmallTest
     public void testTextViewNotNull(){
         TextView textView = (TextView)  screen.findViewById(R.id.timeLeftView);
         assertNotNull(textView);
-    }
+    } */
 
     @SmallTest
+
+    //if no answer is selected... then the submit button won't work
     public void testThis(){
+        Intent mLaunchIntent = new Intent(getInstrumentation()
+                .getTargetContext(), QuizScreen.class);
+        startActivity(mLaunchIntent, null, null);
+
+        final Button button = (Button) getActivity().findViewById(R.id.button); //submit button
+        button.performClick();
+        final Intent launchIntent = getStartedActivityIntent();
+        assertFalse(isFinishCalled());
+
+
+
+
 
     }
 
-    /*
+    /* got rid of this test as it no longer applies
     @SmallTest
     public void testThatButton1HasCorrectAnswerAndCanIncrementPoints(){
         int expectedPoints=1;
@@ -54,5 +78,6 @@ public class QuizScreenTest extends ActivityInstrumentationTestCase2<QuizScreen>
 
 
     }
+
     */
 }

@@ -25,7 +25,7 @@ public class QuizScreen extends Activity {
     private TextView timeLeftView;
     private TextView questionView;
     private RadioButton[] answerButtons = new RadioButton[4];
-    private Button submitButton;
+    public Button submitButton;
 
     private int points;//TRANSFERS TO RESULT SCREEN
     private int currentQuestion;
