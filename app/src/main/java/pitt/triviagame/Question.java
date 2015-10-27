@@ -101,8 +101,8 @@ public class Question {
     }
 
     public boolean equals(Question q) {
-        return question == q.question && answer == q.answer && fakeAnswer1 == q.fakeAnswer1 &&
-                fakeAnswer2 == q.fakeAnswer2 && fakeAnswer3 == q.fakeAnswer3 && category == q.category;
+        return question.equals(q.question) && answer.equals(q.answer) && fakeAnswer1.equals(q.fakeAnswer1) &&
+                fakeAnswer2.equals(q.fakeAnswer2) && fakeAnswer3.equals(q.fakeAnswer3) && category == q.category;
     }
 
     /**
@@ -112,8 +112,8 @@ public class Question {
      */
     public static Category convertStringToCategory(String s)
     {
-        if (s.intern() == "HISTORY") return Category.HISTORY;
-        else if (s.intern() == "BUSINESSES") return  Category.BUSINESSES;
+        if (s.intern().equals("HISTORY")) return Category.HISTORY;
+        else if (s.intern().equals("BUSINESSES")) return  Category.BUSINESSES;
         else return Category.OTHER;
     }
 }

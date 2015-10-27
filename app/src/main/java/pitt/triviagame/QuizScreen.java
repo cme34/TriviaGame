@@ -97,7 +97,7 @@ public class QuizScreen extends Activity {
             if (rb != null) { //Only runs if an answer was selected
                 String selectedAnswer = (String) rb.getText();
                 usersAnswer[currentQuestion] = selectedAnswer.intern();
-                if (selectedAnswer.intern() == questions[currentQuestion].getAnswer())
+                if (selectedAnswer.intern().equals(questions[currentQuestion].getAnswer()))
                     gotQuestionRight[currentQuestion] = true;
                 answerButtonGroup.clearCheck();
             }

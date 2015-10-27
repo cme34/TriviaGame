@@ -103,7 +103,7 @@ public class ReviewScreen extends Activity {
         questionView.setText(questions[currentQuestion].getQuestion());
         correctAnswerView.setText(questions[currentQuestion].getAnswer());
         yourAnswerView.setText(usersAnswer[currentQuestion]);
-        if (questions[currentQuestion].getAnswer().intern() == usersAnswer[currentQuestion].intern())
+        if (questions[currentQuestion].getAnswer().intern().equals(usersAnswer[currentQuestion].intern()))
             answerBackground.setBackgroundColor(0xff77ff77);
         else
             answerBackground.setBackgroundColor(0xffff0000);
