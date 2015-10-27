@@ -2,6 +2,7 @@ package pitt.triviagame;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -20,13 +21,11 @@ public class TriviaGame extends AppCompatActivity {
     /**
      * Creates the main menu screen and all of its components
      */
-    private NotificationAlarmBR alarm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_game);
-        alarm = new NotificationAlarmBR();
+        new NotificationAlarmBR().SetAlarm(this.getApplicationContext());
     }
 
     /**
@@ -69,19 +68,19 @@ public class TriviaGame extends AppCompatActivity {
      * Ends the program when the QUIT button is clicked
      */
     public void onClickQuitButton(View view) {
-        sendNotification();
         finish();
     }
 
-    public void sendNotification() {
+    // Push notification from timed alarm
+    public void sendNotification(Context context) {
         // Notification Tap
-        Intent intent = new Intent(this, TriviaGame.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        Intent intent = new Intent(context, TriviaGame.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
         // Construct Notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+        builder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher));
         builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
         builder.setContentTitle("New Questions Available!");
@@ -89,7 +88,7 @@ public class TriviaGame extends AppCompatActivity {
         builder.setSubText("");
 
         // Push Notification
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
     }
 }
