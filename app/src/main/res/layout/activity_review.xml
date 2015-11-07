@@ -9,107 +9,97 @@
     android:background="#ffffa0"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/reviewScreenQuestion"
+        android:textSize="24sp"
+        android:id="@+id/reviewScreenQuestionTextView"
+        android:layout_gravity="start" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/reviewScreenCorrectAnswer"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/reviewScreenCorrectAnswer"
+        android:textSize="24sp"
+        android:id="@+id/reviewScreenCorrectAnswerTextView"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/reviewScreenYourAnswer"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#77ff77"
+        android:id="@+id/reviewScreenAnswerBackground" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/questionView"
-            android:textSize="24sp"
-            android:id="@+id/questionView"
-            android:layout_gravity="start" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/correctAnswerView"
-            android:textSize="24sp"
-            android:id="@+id/correctView"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/correctAnswerView"
-            android:textSize="24sp"
-            android:id="@+id/correctAnswerView"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/yourAnswerView"
+            android:text="@string/reviewScreenYourAnswer"
             android:textSize="24sp"
-            android:id="@+id/yourView"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/reviewScreenYourAnswerTextView"
+            android:layout_gravity="center" />
+    </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="#77ff77"
-            android:id="@+id/answerBackground" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/yourAnswerView"
-                android:textSize="24sp"
-                android:id="@+id/yourAnswerView"
-                android:layout_gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:layout_gravity="center_horizontal" >
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="64dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/prevButton"
-                android:textSize="32sp"
-                android:id="@+id/prevButton"
-                android:layout_gravity="start"
-                android:onClick="onClickPrevButton" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="64dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/nextButton"
-                android:textSize="32sp"
-                android:id="@+id/nextButton"
-                android:layout_gravity="end"
-                android:onClick="onClickNextButton" />
-        </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:layout_gravity="center_horizontal" >
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="64dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/okayButton"
+            android:text="@string/reviewScreenPrevButton"
             android:textSize="32sp"
-            android:id="@+id/okayButton"
-            android:layout_gravity="center_horizontal"
-            android:onClick="onClickOkayButton" />
+            android:id="@+id/reviewScreenPrevButton"
+            android:layout_gravity="start"
+            android:onClick="onClickPrevButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:text="@string/reviewScreenNextButton"
+            android:textSize="32sp"
+            android:id="@+id/reviewScreenNextButton"
+            android:layout_gravity="end"
+            android:onClick="onClickNextButton" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/reviewScreenOkayButton"
+        android:textSize="32sp"
+        android:id="@+id/reviewScreenOkayButton"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClickOkayButton" />
 </LinearLayout>

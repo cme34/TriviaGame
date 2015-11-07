@@ -1,8 +1,8 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,10 +11,11 @@ import android.widget.TextView;
  * Created by Cory on 10/8/2015.
  * This is the page of the game where the user can see their score and can choose to go back to the main menu or review their answers
  */
-public class ResultScreen extends Activity {
+public class ResultScreen extends AppCompatActivity {
     private TextView scoreView;
-    private Button okayButton;
+    private Button okayButton, reviewButton;
 
+    private int score;
     private Question[] questions;//TRANSFERS TO REVIEW SCREEN
     /** Used to keep track of what questions the user got right */
     private boolean[] gotQuestionRight;//TRANSFERS TO REVIEW SCREEN
@@ -22,7 +23,7 @@ public class ResultScreen extends Activity {
     private String[] usersAnswer;//TRANSFERS TO REVIEW SCREEN
 
     /**
-     * Creates the result screen and initializes all of its components
+     * This method is essentially a constructor. It initializes the result screen
      * Also, it unpacks the data sent from the quiz activity
      */
     @Override
@@ -51,21 +52,28 @@ public class ResultScreen extends Activity {
             System.out.println("Got Right: " + gotQuestionRight[i]);
             System.out.println("Your Answer: " + usersAnswer[i]);
         }
+        score = activityCalled.getExtras().getInt("points");
         //End unpacking data
 
-        scoreView = (TextView) findViewById(R.id.scoreView);
-        scoreView.setText(activityCalled.getExtras().getInt("points") + "/" + QuizScreen.QUESTION_LIMIT);
-        okayButton = (Button) findViewById(R.id.okayButton);
+        scoreView = (TextView) findViewById(R.id.resultScreenPointsTextView);
+        scoreView.setText(score + "/" + QuizScreen.QUESTION_LIMIT);
+        okayButton = (Button) findViewById(R.id.resultScreenOkayButton);
+        reviewButton = (Button) findViewById(R.id.resultScreenReviewButton);
+
+        updateUsersTotalPoints();
+        updateLeaderBoardData();
     }
 
-    /** Takes the user back to the main menu when the OKAY button clicked */
+    /**
+     * On Okay Button clicked, takes the user back to Trivia Game (main menu)
+     */
     public void onClickOkayButton(View view)
     {
         finish();
     }
 
     /**
-     * Takes the user to the review screen when click
+     * On Review Button clicked, takes the user to the review screen
      * Also, it packages data and sends it to the review screen
      */
     public void onClickReviewButton(View view)
@@ -85,5 +93,22 @@ public class ResultScreen extends Activity {
         //End packing data
         startActivity(getResultScreenIntent);
         finish();
+    }
+
+    /**
+     * This method updates the users total points by adding the points they got from the quiz they just took to their stored total
+     */
+    private void updateUsersTotalPoints() { //DATABASE NEEDED
+        User.loggedInUser.setPoints(User.loggedInUser.getPoints() + score);
+
+    }
+
+    /**
+     * This method updates the high scores of the leader board
+     * The reason it is done here is because it is the most efficient way to update the leader board
+     * When someones score changes, see if it belongs on the leader board
+     */
+    private void updateLeaderBoardData() { //DATABASE NEEDED
+
     }
 }

@@ -1,19 +1,18 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
  * Created by Cory on 10/23/2015.
  */
-public class ReviewScreen extends Activity {
-    private TextView questionView;
-    private TextView correctAnswerView;
-    private TextView yourAnswerView;
+public class ReviewScreen extends AppCompatActivity {
+    private TextView questionView, correctAnswerView, yourAnswerView;
+    private Button okayButton, prevButton, nextButton;
     private View answerBackground;
 
     private int currentQuestion;
@@ -24,7 +23,7 @@ public class ReviewScreen extends Activity {
     private String[] usersAnswer;
 
     /**
-     * Creates the review screen and initializes all of its components
+     * This method is essentially a constructor. It initializes the review screen
      * Also, it unpacks the data sent from the result activity
      */
     @Override
@@ -57,10 +56,13 @@ public class ReviewScreen extends Activity {
         }
         //End unpacking data
 
-        questionView = (TextView) findViewById(R.id.questionView);
-        correctAnswerView = (TextView) findViewById(R.id.correctAnswerView);
-        yourAnswerView = (TextView) findViewById(R.id.yourAnswerView);
-        answerBackground = (View) findViewById(R.id.answerBackground);
+        questionView = (TextView) findViewById(R.id.reviewScreenQuestionTextView);
+        correctAnswerView = (TextView) findViewById(R.id.reviewScreenCorrectAnswerTextView);
+        yourAnswerView = (TextView) findViewById(R.id.reviewScreenYourAnswerTextView);
+        answerBackground = (View) findViewById(R.id.reviewScreenAnswerBackground);
+        prevButton = (Button) findViewById(R.id.reviewScreenPrevButton);
+        nextButton = (Button) findViewById(R.id.reviewScreenNextButton);
+        okayButton = (Button) findViewById(R.id.reviewScreenOkayButton);
 
         changeQuestion();
     }
@@ -103,6 +105,7 @@ public class ReviewScreen extends Activity {
         questionView.setText(questions[currentQuestion].getQuestion());
         correctAnswerView.setText(questions[currentQuestion].getAnswer());
         yourAnswerView.setText(usersAnswer[currentQuestion]);
+        //Sets the background color of the answer to red or green depending on if the answer is right or not
         if (questions[currentQuestion].getAnswer().intern().equals(usersAnswer[currentQuestion].intern()))
             answerBackground.setBackgroundColor(0xff77ff77);
         else

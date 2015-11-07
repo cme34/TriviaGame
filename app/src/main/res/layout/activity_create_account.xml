@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding = "16dp"
+    tools:context=".createAccountScreen"
+    android:background="#ffffa0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/createAccountScreenUsername"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:id="@+id/createAccountScreenUsernameTextField"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/createAccountScreenUsernameCharLength"
+        android:textSize="12sp"
+        android:layout_gravity="end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/createAccountScreenUsernameValidChars"
+        android:textSize="12sp"
+        android:layout_gravity="end"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/createAccountScreenCreatePassword"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/createAccountScreenCreatePasswordTextField"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/createAccountScreenPasswordCharLength"
+        android:textSize="12sp"
+        android:layout_gravity="end"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/createAccountScreenConfirmPassword"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/createAccountScreenConfirmPasswordTextField"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/createAccountScreenCreateAccountButton"
+        android:textSize="28sp"
+        android:id="@+id/createAccountScreenCreateAccountButton"
+        android:onClick="onClickCreateAccountButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/createAccountScreenCancelButton"
+        android:textSize="32sp"
+        android:id="@+id/createAccountScreenCancelButton"
+        android:onClick="onClickCancelButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+</LinearLayout>

@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * Created by Cory on 10/8/2015.
@@ -18,14 +21,26 @@ import android.view.View;
  */
 
 public class TriviaGame extends AppCompatActivity {
+    private Button playButton, leaderBoardButton, quitButton;
+    private ImageButton profileButton;
+    private TextView usernameView;
+
     /**
-     * Creates the main menu screen and all of its components
+     * This method is essentially a constructor. It initializes the trivia game (main menu screen)
+     * Also it unpacks some data from the sign in screen
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_game);
         new NotificationAlarmBR().SetAlarm(this.getApplicationContext());
+        Intent activityCalled = getIntent();
+        playButton = (Button) findViewById(R.id.triviaGamePlayButton);
+        leaderBoardButton = (Button) findViewById(R.id.triviaGameLeaderBoardButton);
+        quitButton = (Button) findViewById(R.id.triviaGameQuitButton);
+        profileButton = (ImageButton) findViewById(R.id.triviaGameProfileButton);
+        usernameView = (TextView) findViewById(R.id.triviaGameUsernameTextView);
+        usernameView.setText(User.loggedInUser.getUsername());
     }
 
     /**
@@ -57,7 +72,7 @@ public class TriviaGame extends AppCompatActivity {
     }
 
     /**
-     * Takes the user from the main menu to the quiz screen to answer questions
+     * On Play Button clicked, takes the user from the main menu to the quiz screen to answer questions
      */
     public void onClickPlayButton(View view) {
         Intent getQuizScreenIntent = new Intent(this, QuizScreen.class);
@@ -65,13 +80,32 @@ public class TriviaGame extends AppCompatActivity {
     }
 
     /**
-     * Ends the program when the QUIT button is clicked
+     * On Leader Board Button clicked, takes the user from the main menu to the leader board to see other peoples scores
+     */
+    public void onClickLeaderBoardButton(View view) {
+        Intent getLeaderBoardScreenIntent = new Intent(this, LeaderBoardScreen.class);
+        startActivity(getLeaderBoardScreenIntent);
+    }
+
+    /**
+     * On Settings Button clicked, takes the user from the main menu to settings to configure settings
+     */
+    public void onClickSettingsButton(View view) {
+        Intent getSettingsScreen = new Intent(this, SettingsScreen.class);
+        startActivity(getSettingsScreen);
+    }
+
+    /**
+     * On Quit Button Clicked, ends the program
      */
     public void onClickQuitButton(View view) {
         finish();
     }
 
-    // Push notification from timed alarm
+    /**
+     * Push notification from timed alarm
+     * @param context
+     */
     public void sendNotification(Context context) {
         // Notification Tap
         Intent intent = new Intent(context, TriviaGame.class);

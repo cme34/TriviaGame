@@ -14,9 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/pointsView"
+        android:text="@string/resultScreenPoints"
         android:textSize="40sp"
-        android:id="@+id/pointsView"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -24,18 +23,18 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/scoreView"
+        android:text="@string/resultScreenScore"
         android:textSize="40sp"
-        android:id="@+id/scoreView"
+        android:id="@+id/resultScreenPointsTextView"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
-        android:text="@string/okayButton"
+        android:text="@string/resultScreenOkayButton"
         android:textSize="32sp"
-        android:id="@+id/okayButton"
+        android:id="@+id/resultScreenOkayButton"
         android:layout_gravity="center_horizontal"
         android:onClick="onClickOkayButton" />
 
@@ -43,9 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
-        android:text="@string/reviewButton"
+        android:text="@string/resultScreenReviewButton"
         android:textSize="32sp"
-        android:id="@+id/reviewButton"
+        android:id="@+id/resultScreenReviewButton"
         android:layout_gravity="center_horizontal"
         android:onClick="onClickReviewButton" />
 </LinearLayout>

@@ -3,58 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding = "16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="48dp"
+    android:paddingRight="48dp"
     tools:context=".TriviaGame"
     android:background="#ffffa0"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ImageButton
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:id="@+id/triviaGameProfileButton"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TriviaGameUsername"
+        android:textSize="20sp"
+        android:id="@+id/triviaGameUsernameTextView"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="56dp"
+        android:text="@string/TriviaGamePlayButton"
+        android:textSize="28sp"
+        android:id="@+id/triviaGamePlayButton"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClickPlayButton" />
 
-        <ImageButton
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:id="@+id/profileButton"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/TriviaGameLeaderBoardButton"
+        android:textSize="28sp"
+        android:id="@+id/triviaGameLeaderBoardButton"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClickLeaderBoardButton"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/username"
-            android:textSize="20sp"
-            android:id="@+id/username"
-            android:layout_below="@+id/profileButton"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/TriviaGameSettingsButton"
+        android:textSize="28sp"
+        android:id="@+id/triviaGameSettingsButton"
+        android:onClick="onClickSettingsButton" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/playButton"
-            android:textSize="40sp"
-            android:id="@+id/playButton"
-            android:layout_gravity="center_horizontal"
-            android:onClick="onClickPlayButton" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:text="@string/leaderBoardButton"
-            android:textSize="32sp"
-            android:id="@+id/leaderBoardButton"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:text="@string/quitButton"
-            android:textSize="32sp"
-            android:id="@+id/quitButton"
-            android:onClick="onClickQuitButton" />
-    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/TriviaGameQuitButton"
+        android:textSize="28sp"
+        android:id="@+id/triviaGameQuitButton"
+        android:onClick="onClickQuitButton" />
 </LinearLayout>
