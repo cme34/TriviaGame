@@ -51,9 +51,13 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
                 .getTargetContext(), QuizScreen.class);
         startActivity(mLaunchIntent, null, null);
 
-        final Button button = (Button) getActivity().findViewById(R.id.button); //submit button
-        button.performClick();
+
+
+        final Button buttonsubmit = (Button) getActivity().findViewById(R.id.quizScreenSubmitButton);
+        buttonsubmit.performClick();
+
         final Intent launchIntent = getStartedActivityIntent();
+
         assertFalse(isFinishCalled());
 
 

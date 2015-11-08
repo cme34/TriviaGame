@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -20,7 +21,7 @@ import android.widget.TextView;
  * This is the main menu page of the game
  */
 
-public class TriviaGame extends AppCompatActivity {
+public class TriviaGame extends Activity {
     private Button playButton, leaderBoardButton, quitButton;
     private ImageButton profileButton;
     private TextView usernameView;
@@ -40,7 +41,15 @@ public class TriviaGame extends AppCompatActivity {
         quitButton = (Button) findViewById(R.id.triviaGameQuitButton);
         profileButton = (ImageButton) findViewById(R.id.triviaGameProfileButton);
         usernameView = (TextView) findViewById(R.id.triviaGameUsernameTextView);
-        usernameView.setText(User.loggedInUser.getUsername());
+
+        if (User.loggedInUser == null) {
+            //this should never happen, but I couldn't run a test without this, due to null pointer exception
+            usernameView.setText("Not logged in");
+        } else {
+
+
+            usernameView.setText(User.loggedInUser.getUsername());
+        }
     }
 
     /**

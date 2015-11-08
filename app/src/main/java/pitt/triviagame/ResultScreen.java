@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import android.widget.TextView;
  * Created by Cory on 10/8/2015.
  * This is the page of the game where the user can see their score and can choose to go back to the main menu or review their answers
  */
-public class ResultScreen extends AppCompatActivity {
+public class ResultScreen extends Activity {
     private TextView scoreView;
     private Button okayButton, reviewButton;
 

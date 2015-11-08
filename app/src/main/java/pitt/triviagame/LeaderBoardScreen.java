@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.TextView;
  * Created by Cory on 11/5/2015.
  * This page allows the user to view their points as well as the top five people with the most points
  */
-public class LeaderBoardScreen extends AppCompatActivity {
+public class LeaderBoardScreen extends Activity {
     private TextView currentUserScore;
     private TextView[] usernameView;
     private TextView[] scoreView;

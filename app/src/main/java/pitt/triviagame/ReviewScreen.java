@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 /**
  * Created by Cory on 10/23/2015.
  */
-public class ReviewScreen extends AppCompatActivity {
+public class ReviewScreen extends Activity {
     private TextView questionView, correctAnswerView, yourAnswerView;
     private Button okayButton, prevButton, nextButton;
     private View answerBackground;

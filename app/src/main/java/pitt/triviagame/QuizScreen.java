@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,7 +18,7 @@ import java.util.Random;
  * Created by Cory on 10/8/2015.
  * This is the page of the game where the user answers trivia questions
  */
-public class QuizScreen extends AppCompatActivity {
+public class QuizScreen extends Activity {
     /** The amount of questions that need to be answered, obtained from the server, etc. */
     public static final int QUESTION_LIMIT = 5;
 

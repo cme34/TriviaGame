@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.Toast;
  * Created by Cory on 11/6/2015.
  * This page is where a user can create an account
  */
-public class CreateAccountScreen extends AppCompatActivity {
+public class CreateAccountScreen extends Activity {
     Button createAccountButton, cancelButton;
     EditText usernameEditText, createPasswordEditText, confirmPasswordEditText;
     String username, createPassword, confirmPassword;
