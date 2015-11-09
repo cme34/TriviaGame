@@ -36,17 +36,12 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
         screen = getActivity();
     }
 
-    /*
-    @SmallTest
-    public void testTextViewNotNull(){
-        TextView textView = (TextView)  screen.findViewById(R.id.timeLeftView);
-        assertNotNull(textView);
-    } */
+
 
     @SmallTest
 
     //if no answer is selected... then the submit button should not submit
-    public void testSubmitButton(){
+    public void testSubmitButtonNoAnswerChecked(){
         Intent mLaunchIntent = new Intent(getInstrumentation()
                 .getTargetContext(), QuizScreen.class);
         startActivity(mLaunchIntent, null, null);
@@ -54,11 +49,17 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
 
 
         final Button buttonsubmit = (Button) getActivity().findViewById(R.id.quizScreenSubmitButton);
+
+        //5 questions, so click submit 5 times
+        buttonsubmit.performClick();
+        buttonsubmit.performClick();
+        buttonsubmit.performClick();
+        buttonsubmit.performClick();
         buttonsubmit.performClick();
 
         final Intent launchIntent = getStartedActivityIntent();
 
-        assertFalse(isFinishCalled());
+        assertNull(launchIntent);
 
 
 
@@ -66,22 +67,47 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
 
     }
 
-    /* got rid of this test as it no longer applies
+    //selects an answer and submits it for the 5 questions and make sure it submits properly
     @SmallTest
-    public void testThatButton1HasCorrectAnswerAndCanIncrementPoints(){
-        int expectedPoints=1;
-        int points=0;
+    public void testSubmitButtonAnswerChecked(){
+        Intent mLaunchIntent = new Intent(getInstrumentation()
+                .getTargetContext(), QuizScreen.class);
+        startActivity(mLaunchIntent, null, null);
 
-        Button button1 = (Button)screen.findViewById(R.id.answerButton1);
-        String numString = button1.getText().toString();
-        int num = Integer.parseInt(numString);
-        if (num==4){
-            points++;
-        }
-        assertEquals(expectedPoints, points);
+
+
+        final Button buttonsubmit = (Button) getActivity().findViewById(R.id.quizScreenSubmitButton);
+        final RadioButton answer = (RadioButton) getActivity().findViewById(R.id.quizScreenAnswerButton1);
+
+        final RadioGroup rg = (RadioGroup) getActivity().findViewById(R.id.quizScreenAnswerButtonGroup);
+
+        //do this 5 times... since there are 5 questions
+        answer.setChecked(true);
+        rg.check(R.id.quizScreenAnswerButton1);
+        buttonsubmit.performClick();
+        answer.setChecked(true);
+        rg.check(R.id.quizScreenAnswerButton1);
+        buttonsubmit.performClick();
+        answer.setChecked(true);
+        rg.check(R.id.quizScreenAnswerButton1);
+        buttonsubmit.performClick();
+        answer.setChecked(true);
+        rg.check(R.id.quizScreenAnswerButton1);
+        buttonsubmit.performClick();
+        answer.setChecked(true);
+        rg.check(R.id.quizScreenAnswerButton1);
+
+        buttonsubmit.performClick();
+
+        final Intent launchIntent = getStartedActivityIntent();
+
+        assertNotNull(launchIntent);
+
+
+
 
 
     }
 
-    */
+
 }

@@ -44,4 +44,26 @@ public class SignInScreenTest extends ActivityUnitTestCase<SignInScreen> {
         assertTrue(isFinishCalled());
 
     }
+
+    @SmallTest
+    /*
+    Tests the sign in function with wrong password to make sure login is not successful
+     */
+    public void testSignInWrongPass() {
+        Intent mLaunchIntent = new Intent(getInstrumentation()
+                .getTargetContext(), SignInScreen.class);
+        startActivity(mLaunchIntent, null, null);
+
+        final EditText user = (EditText) getActivity().findViewById(R.id.signInScreenUsernameTextField);
+        user.setText("admin");
+        final EditText pass = (EditText) getActivity().findViewById(R.id.signInScreenPasswordTextField);
+        pass.setText("admingfd");
+        final Button submitbutton = (Button) getActivity().findViewById(R.id.signInScreenSignInButton);
+        submitbutton.performClick();
+
+        final Intent launchIntent = getStartedActivityIntent();
+
+        assertFalse(isFinishCalled());
+
+    }
 }

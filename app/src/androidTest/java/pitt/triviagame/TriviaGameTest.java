@@ -36,5 +36,22 @@ public class TriviaGameTest extends ActivityUnitTestCase<TriviaGame> {
 
     }
 
+    //When the settings button is clicked, does it work?
+    @MediumTest
+    public void testSettingsButton(){
+
+        Intent mLaunchIntent = new Intent(getInstrumentation()
+                .getTargetContext(), TriviaGame.class);
+        startActivity(mLaunchIntent, null, null);
+        final Button button = (Button) getActivity().findViewById(R.id.triviaGameSettingsButton);
+
+
+
+        button.performClick();
+        final Intent launchIntent = getStartedActivityIntent();
+        assertNotNull(launchIntent);
+
+    }
+
 
 }
