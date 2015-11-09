@@ -46,8 +46,6 @@ public class TriviaGame extends Activity {
             //this should never happen, but I couldn't run a test without this, due to null pointer exception
             usernameView.setText("Not logged in");
         } else {
-
-
             usernameView.setText(User.loggedInUser.getUsername());
         }
     }
