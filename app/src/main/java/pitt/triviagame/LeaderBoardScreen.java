@@ -53,7 +53,7 @@ public class LeaderBoardScreen extends Activity {
     /**
      * This method gets the current leader board results for the database and sets all the text views accordingly
      */
-    private void obtainLeaderBoardValues() { //DATABASE NEEDED
+    private void obtainLeaderBoardValues() { // TODO: DATABASE NEEDED
 
     }
 }

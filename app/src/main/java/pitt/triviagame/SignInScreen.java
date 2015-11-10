@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-//Leonard Aronson code review:  Throughout this code you use the "==" comparitor to compare two strings however, you
-//need to use the .equals() method.
 
 /**
  * Created by Cory on 11/6/2015.
@@ -42,13 +40,13 @@ public class SignInScreen extends Activity {
         username = usernameEditText.getText().toString();
         password = passwordEditText.getText().toString();
         //Is username field empty
-        if (username.intern() == "") {
+        if (username.intern().equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter a username and password", Toast.LENGTH_SHORT).show();
             passwordEditText.setText("");
             return;
         }
         //Is password field empty
-        if (password.intern() == "") {
+        if (password.intern().equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter a password", Toast.LENGTH_SHORT).show();
             passwordEditText.setText("");
             return;
@@ -79,8 +77,8 @@ public class SignInScreen extends Activity {
      *
      * @return returns true if the credentials match up with what is in the database
      */
-    private boolean checkSignInCredentials() { //DATABASE NEEDED
-        if (username.intern() == "admin" && password.intern() == "admin") {
+    private boolean checkSignInCredentials() { // TODO: DATABASE NEEDED
+        if (username.intern().equals("admin") && password.intern().equals("admin")) {
             User.loggedInUser = new User(username, password, 0);
             return true;
         }

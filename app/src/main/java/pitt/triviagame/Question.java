@@ -103,9 +103,9 @@ public class Question {
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
             Question q = (Question) obj;
-            return this.getQuestion().intern() == q.getQuestion().intern() && this.getAnswer().intern() == q.getAnswer().intern() &&
-                    this.getFakeAnswer1().intern() == q.getFakeAnswer1().intern() && this.getFakeAnswer2().intern() == q.getFakeAnswer2().intern() &&
-                    this.getFakeAnswer3().intern() == q.getFakeAnswer3().intern() && this.getCategory() == q.getCategory();
+            return this.getQuestion().intern().equals(q.getQuestion().intern()) && this.getAnswer().intern().equals(q.getAnswer().intern()) &&
+                    this.getFakeAnswer1().intern().equals(q.getFakeAnswer1().intern()) && this.getFakeAnswer2().intern().equals(q.getFakeAnswer2().intern()) &&
+                    this.getFakeAnswer3().intern().equals(q.getFakeAnswer3().intern()) && this.getCategory() == q.getCategory();
         }
         else
             return false;
@@ -118,8 +118,8 @@ public class Question {
      */
     public static Category convertStringToCategory(String s)
     {
-        if (s.intern() == "HISTORY") return Category.HISTORY;
-        else if (s.intern() == "BUSINESSES") return  Category.BUSINESSES;
+        if (s.intern().equals("HISTORY")) return Category.HISTORY;
+        else if (s.intern().equals("BUSINESSES")) return  Category.BUSINESSES;
         else return Category.OTHER;
     }
 }

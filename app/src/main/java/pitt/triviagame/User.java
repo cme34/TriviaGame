@@ -65,12 +65,11 @@ public class User {
         return username + ", " + password + ", " + points;
     }
 
-    //Leonard Aronson Code Review: You need to use .equals() when comparing two strings in the username and password checks!
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
             User u = (User) obj;
-            return this.getUsername().intern() == u.getUsername().intern() &&
-                    this.getPassword().intern() == u.getPassword().intern() && this.getPoints() == u.getPoints();
+            return this.getUsername().intern().equals(u.getUsername().intern()) &&
+                    this.getPassword().intern().equals(u.getPassword().intern()) && this.getPoints() == u.getPoints();
         }
         else
             return false;

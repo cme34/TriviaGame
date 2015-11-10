@@ -207,7 +207,7 @@ public class QuizScreen extends Activity {
      * This method obtains questions from the database
      * The amount obtained it based on QUESTION_LIMIT
      */
-    private void obtainQuestionsFromDatabase() { //DATABASE NEEDED
+    private void obtainQuestionsFromDatabase() { // TODO: DATABASE NEEDED
         Question dummyQuestion1 = new Question("2 + 2 = ?", "4", "1", "2", "3", Category.OTHER);
         Question dummyQuestion2 = new Question("2 * 2 = ?", "4", "1", "2", "3", Category.OTHER);
         Question dummyQuestion3 = new Question("2 - 2 = ?", "0", "1", "2", "3", Category.OTHER);

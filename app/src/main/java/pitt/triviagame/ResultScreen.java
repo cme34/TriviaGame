@@ -99,7 +99,7 @@ public class ResultScreen extends Activity {
     /**
      * This method updates the users total points by adding the points they got from the quiz they just took to their stored total
      */
-    private void updateUsersTotalPoints() { //DATABASE NEEDED
+    private void updateUsersTotalPoints() { // TODO: DATABASE NEEDED
         User.loggedInUser.setPoints(User.loggedInUser.getPoints() + score);
 
     }
@@ -109,7 +109,7 @@ public class ResultScreen extends Activity {
      * The reason it is done here is because it is the most efficient way to update the leader board
      * When someones score changes, see if it belongs on the leader board
      */
-    private void updateLeaderBoardData() { //DATABASE NEEDED
+    private void updateLeaderBoardData() { // TODO: DATABASE NEEDED
 
     }
 }

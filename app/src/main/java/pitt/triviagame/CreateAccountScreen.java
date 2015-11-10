@@ -57,7 +57,7 @@ public class CreateAccountScreen extends Activity {
      */
     private boolean isCredentialsValid() {
         //Check if any fields are empty
-        if (username.intern() == "" || createPassword.intern() == "" || confirmPassword.intern() == "") {
+        if (username.intern().equals("") || createPassword.intern().equals("") || confirmPassword.intern().equals("")) {
             Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -115,7 +115,7 @@ public class CreateAccountScreen extends Activity {
             return false;
         }
         //Does create password match up with confirm password
-        if (createPassword.intern() != confirmPassword.intern()) {
+        if (!(createPassword.intern().equals(confirmPassword.intern()))) {
             Toast.makeText(getApplicationContext(), "Password fields do not match", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -127,7 +127,7 @@ public class CreateAccountScreen extends Activity {
      * This method checks to see if the username in the text field is already in the database
      * @return returns true if username is not in the database
      */
-    public boolean isUsernameUnique() { //DATABASE NEEDED
+    public boolean isUsernameUnique() { // TODO: DATABASE NEEDED
 
         return true;
     }
@@ -135,7 +135,7 @@ public class CreateAccountScreen extends Activity {
     /**
      * This method adds the users credentials to the database
      */
-    private void sendCredentialsToDatabase() { //DATABASE NEEDED
+    private void sendCredentialsToDatabase() { // TODO: DATABASE NEEDED
 
     }
 }
