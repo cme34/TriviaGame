@@ -11,6 +11,8 @@ public class User {
     private String username, password;
     private int points;
 
+    //Leonard Aronson code review: You may want to beware that code passed from appengine could come in as a json 
+    //file so you may need to access this information in a different way when reading in a user from the database.
     public User() {
         username = "";
         password = "";
@@ -63,6 +65,7 @@ public class User {
         return username + ", " + password + ", " + points;
     }
 
+    //You need to use .equals() when comparing two strings in the username and password checks!
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
             User u = (User) obj;
