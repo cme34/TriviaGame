@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//Leonard Aronson code review:  Throughout this code you use the "==" comparitor to compare two strings however, you
+//need to use the .equals() method.
+
 /**
  * Created by Cory on 11/6/2015.
  * This is the page were a user can sign in or choose to go to the create account page
