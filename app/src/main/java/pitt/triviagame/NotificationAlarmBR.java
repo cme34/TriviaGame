@@ -12,6 +12,9 @@ import java.util.GregorianCalendar;
 
 public class NotificationAlarmBR extends BroadcastReceiver {
 
+//Leonard Aronson code review: I like the use of comments in your code however, you may want to refactor in order to 
+//make your code slightly more readable.
+
     @Override
     // When alarm broadcast is received...
     public void onReceive(Context context, Intent intent) {
@@ -25,13 +28,16 @@ public class NotificationAlarmBR extends BroadcastReceiver {
 
     // Creates the notification alarm
     public void SetAlarm(Context context) {
-        int hour = 10;  // TODO implement to change in settings
+        int hour = 10;  // TODO: implement to change in settings
         GregorianCalendar calendar = new GregorianCalendar(); // Create gregorian calendar
         calendar.setTimeInMillis(System.currentTimeMillis()); // Set date to current system time
         // If the current time is past the alarm time then set alarm for tomorrow,
         // otherwise the alarm will think it has passed and end up triggering on the next minute
         if (calendar.get(Calendar.HOUR_OF_DAY) >= hour)
             calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + 1);
+            
+        //Leonard Aronson code review:  I think it may be overkill to use these small mesurements in your code.  I do not
+        // think you need to set these fields.
         // Now set calendar time to the set notification hour at 0 minutes 0 seconds
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, 0);
