@@ -56,6 +56,7 @@
     <string name="reviewScreenOkayButton">OKAY</string>
 
     <!--Settings-->
+    <string name="settingsScreenNotificationSwitch">Daily Reminder Notifications</string>
     <string name="settingsScreenOkayButton">OKAY</string>
 
     <!--SignIn-->

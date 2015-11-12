@@ -6,14 +6,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch;
 
 /**
  * Created by Cory on 11/7/2015.
  * This page allows the user to edit app settings
  */
 public class SettingsScreen extends Activity {
+
+    public static Switch notifySwitch;
 
     /**
      * This method is essentially a constructor. It initializes the trivia game (main menu screen)
@@ -23,7 +26,18 @@ public class SettingsScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
+        notifySwitch = (Switch) findViewById(R.id.notificationSwitch);
+        notifySwitch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            /** On notificationSwitch switch, set or cancel notification alarm */
+            @Override
+            // TODO: Have setting persist when app is closed
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    new NotificationAlarmBR().SetAlarm(getBaseContext());
+                else
+                    new NotificationAlarmBR().CancelAlarm(getBaseContext());
+            }
+        });
     }
 
     /**
