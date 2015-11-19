@@ -10,48 +10,51 @@ public class User {
 
     private String username, password;
     private int points;
+    private boolean quizTaken;
 
-    //Leonard Aronson code review: You may want to beware that code passed from appengine could come in as a json 
-    //file so you may need to access this information in a different way when reading in a user from the database.
     public User() {
         username = "";
         password = "";
         points = 0;
+        quizTaken = false;
     }
 
-    public User(String name, String pass, int pts) {
-        username = name.intern();
-        password = pass.intern();
+    public User(String name, String pass, int pts, boolean qTaken) {
+        username = name;
+        password = pass;
         points = pts;
+        quizTaken = qTaken;
     }
 
     public User(User u) {
-        username = u.getUsername().intern();
-        password = u.getPassword().intern();
+        username = u.getUsername();
+        password = u.getPassword();
         points = u.getPoints();
+        quizTaken = u.isQuizTaken();
     }
 
-    public void setUser(String name, String pass, int pts) {
-        username = name.intern();
-        password = pass.intern();
+    public void setUser(String name, String pass, int pts, boolean qTaken) {
+        username = name;
+        password = pass;
         points = pts;
+        quizTaken = qTaken;
     }
 
     public void setUsername(String name) {
-        username = name.intern();
+        username = name;
     }
 
     public void setPassword(String pass) {
-        password = pass.intern();
+        password = pass;
     }
 
     public void setPoints(int pts) {
         points = pts;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public void setQuizTaken(boolean qTaken) { quizTaken = qTaken; }
+
+    public String getUsername() { return username; }
 
     public String getPassword() {
         return password;
@@ -61,15 +64,16 @@ public class User {
         return points;
     }
 
-    public String toString() {
-        return username + ", " + password + ", " + points;
-    }
+    public boolean isQuizTaken() { return quizTaken; }
+
+    public String toString() { return username + ", " + password + ", " + points + ", " + quizTaken; }
 
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
             User u = (User) obj;
-            return this.getUsername().intern().equals(u.getUsername().intern()) &&
-                    this.getPassword().intern().equals(u.getPassword().intern()) && this.getPoints() == u.getPoints();
+            return this.getUsername().equals(u.getUsername()) &&
+                    this.getPassword().equals(u.getPassword()) &&
+                    this.getPoints() == u.getPoints() && this.isQuizTaken() == u.isQuizTaken();
         }
         else
             return false;

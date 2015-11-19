@@ -1,6 +1,5 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Cory on 11/6/2015.
  * This is the page were a user can sign in or choose to go to the create account page
  */
-public class SignInScreen extends Activity {
+public class SignInScreen extends AppCompatActivity {
     private Button signInButton, createAccountButton;
     private EditText usernameEditText, passwordEditText;
     private String username, password;
@@ -40,13 +41,13 @@ public class SignInScreen extends Activity {
         username = usernameEditText.getText().toString();
         password = passwordEditText.getText().toString();
         //Is username field empty
-        if (username.intern().equals("")) {
+        if (username.equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter a username and password", Toast.LENGTH_SHORT).show();
             passwordEditText.setText("");
             return;
         }
         //Is password field empty
-        if (password.intern().equals("")) {
+        if (password.equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter a password", Toast.LENGTH_SHORT).show();
             passwordEditText.setText("");
             return;
@@ -74,15 +75,47 @@ public class SignInScreen extends Activity {
     }
 
     /**
-     *
+     * Checks the credentials the user entered with the database
      * @return returns true if the credentials match up with what is in the database
      */
-    private boolean checkSignInCredentials() { // TODO: DATABASE NEEDED
-        if (username.intern().equals("admin") && password.intern().equals("admin")) {
-            User.loggedInUser = new User(username, password, 0);
+    private boolean checkSignInCredentials() {
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.RECEIVE_SIGN_IN_VALID, "?" + username + "?" + password);//Param for checking if sign in is valid
+
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null)
+            jsonString = task.getJsonString();
+
+        //Create Json object
+        JSONObject jsonFile = null;
+        boolean signInSuccessful = false;
+        int userPoints = 0;
+        boolean userQuizTaken = false;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get if sign in successful from json file
+            signInSuccessful = jsonFile.getBoolean("Value");
+            if (signInSuccessful) {
+                userPoints = jsonFile.getInt("Points");
+                int i = jsonFile.getInt("QuizTaken");
+                if (i == 0)
+                    userQuizTaken = false;
+                else
+                    userQuizTaken = true;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //Sign user in
+        if (signInSuccessful) {
+            User.loggedInUser = new User(username, password, userPoints, userQuizTaken);
             return true;
         }
-        else
+        else {
             return false;
+        }
     }
 }

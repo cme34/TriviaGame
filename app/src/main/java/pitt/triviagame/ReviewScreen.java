@@ -1,6 +1,5 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 /**
  * Created by Cory on 10/23/2015.
  */
-public class ReviewScreen extends Activity {
+public class ReviewScreen extends AppCompatActivity {
     private TextView questionView, correctAnswerView, yourAnswerView;
     private Button okayButton, prevButton, nextButton;
     private View answerBackground;
@@ -51,9 +50,6 @@ public class ReviewScreen extends Activity {
             questions[i].setCategory(Question.convertStringToCategory(activityCalled.getExtras().getString("questions[" + i + "].getCategory()")));
             gotQuestionRight[i] = activityCalled.getExtras().getBoolean("gotQuestionRight" + i);
             usersAnswer[i] = activityCalled.getExtras().getString("userAnswer" + i);
-            System.out.println(questions[i].getQuestion());
-            System.out.println("Got Right: " + gotQuestionRight[i]);
-            System.out.println("Your Answer: " + usersAnswer[i]);
         }
         //End unpacking data
 
@@ -107,7 +103,7 @@ public class ReviewScreen extends Activity {
         correctAnswerView.setText(questions[currentQuestion].getAnswer());
         yourAnswerView.setText(usersAnswer[currentQuestion]);
         //Sets the background color of the answer to red or green depending on if the answer is right or not
-        if (questions[currentQuestion].getAnswer().intern().equals(usersAnswer[currentQuestion].intern()))
+        if (questions[currentQuestion].getAnswer().equals(usersAnswer[currentQuestion]))
             answerBackground.setBackgroundColor(0xff77ff77);
         else
             answerBackground.setBackgroundColor(0xffff0000);

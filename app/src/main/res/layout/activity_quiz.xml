@@ -34,7 +34,7 @@
         android:layout_marginBottom="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/quizScreenQuestion"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:id="@+id/quizScreenQuestionTextView"
         android:layout_gravity="start" />
 
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quizScreenAnswerButton1"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:id="@+id/quizScreenAnswerButton1"
             android:layout_gravity="start"
             android:checked="false" />
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quizScreenAnswerButton2"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:id="@+id/quizScreenAnswerButton2"
             android:layout_gravity="start" />
 
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quizScreenAnswerButton3"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:id="@+id/quizScreenAnswerButton3"
             android:layout_gravity="start" />
 
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quizScreenAnswerButton4"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:id="@+id/quizScreenAnswerButton4"
             android:layout_gravity="start" />
     </RadioGroup>

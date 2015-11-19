@@ -1,6 +1,5 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Cory on 10/8/2015.
  * This is the page of the game where the user can see their score and can choose to go back to the main menu or review their answers
  */
-public class ResultScreen extends Activity {
+public class ResultScreen extends AppCompatActivity {
     private TextView scoreView;
     private Button okayButton, reviewButton;
 
@@ -49,9 +51,6 @@ public class ResultScreen extends Activity {
             questions[i].setCategory(Question.convertStringToCategory(activityCalled.getExtras().getString("questions[" + i + "].getCategory()")));
             gotQuestionRight[i] = activityCalled.getExtras().getBoolean("gotQuestionRight" + i);
             usersAnswer[i] = activityCalled.getExtras().getString("userAnswer" + i);
-            System.out.println(questions[i].getQuestion());
-            System.out.println("Got Right: " + gotQuestionRight[i]);
-            System.out.println("Your Answer: " + usersAnswer[i]);
         }
         score = activityCalled.getExtras().getInt("points");
         //End unpacking data
@@ -62,7 +61,6 @@ public class ResultScreen extends Activity {
         reviewButton = (Button) findViewById(R.id.resultScreenReviewButton);
 
         updateUsersTotalPoints();
-        updateLeaderBoardData();
     }
 
     /**
@@ -99,17 +97,28 @@ public class ResultScreen extends Activity {
     /**
      * This method updates the users total points by adding the points they got from the quiz they just took to their stored total
      */
-    private void updateUsersTotalPoints() { // TODO: DATABASE NEEDED
+    private void updateUsersTotalPoints() {
+        //Update score client side
         User.loggedInUser.setPoints(User.loggedInUser.getPoints() + score);
 
-    }
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.SEND_POINTS, "?" + User.loggedInUser.getUsername() + "?" + User.loggedInUser.getPoints());//Param for sending updated score
 
-    /**
-     * This method updates the high scores of the leader board
-     * The reason it is done here is because it is the most efficient way to update the leader board
-     * When someones score changes, see if it belongs on the leader board
-     */
-    private void updateLeaderBoardData() { // TODO: DATABASE NEEDED
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null)
+            jsonString = task.getJsonString();
 
+        //Create Json object
+        JSONObject jsonFile = null;
+        boolean sentSuccessful = false;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get if sign in successful from json file
+            sentSuccessful = jsonFile.getBoolean("Value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
