@@ -1,6 +1,5 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -15,13 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Cory on 10/8/2015.
  * This is the main menu page of the game
  */
-
-public class TriviaGame extends Activity {
+public class TriviaGame extends AppCompatActivity {
     private Button playButton, leaderBoardButton, quitButton;
     private ImageButton profileButton;
     private TextView usernameView;
@@ -82,8 +81,14 @@ public class TriviaGame extends Activity {
      * On Play Button clicked, takes the user from the main menu to the quiz screen to answer questions
      */
     public void onClickPlayButton(View view) {
-        Intent getQuizScreenIntent = new Intent(this, QuizScreen.class);
-        startActivity(getQuizScreenIntent);
+        //If the user has not taken the days quiz, then send them to the quiz screen
+        if (!User.loggedInUser.isQuizTaken()) {
+            Intent getQuizScreenIntent = new Intent(this, QuizScreen.class);
+            startActivity(getQuizScreenIntent);
+        } else {
+            Toast.makeText(getApplicationContext(), "You already took today's quiz", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     /**

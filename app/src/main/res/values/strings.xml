@@ -8,7 +8,7 @@
     <string name="createAccountScreenUsername">Username:</string>
     <string name="createAccountScreenCreatePassword">Create Password:</string>
     <string name="createAccountScreenConfirmPassword">Confirm Password:</string>
-    <string name="createAccountScreenUsernameCharLength">Between 6 to 24 characters</string>
+    <string name="createAccountScreenUsernameCharLength">Between 6 to 18 characters</string>
     <string name="createAccountScreenPasswordCharLength">Between 8 to 64 characters</string>
     <string name="createAccountScreenUsernameValidChars">Valid Characters: Letters, Numbers and _</string>
     <string name="createAccountScreenCreateAccountButton">Create Account</string>

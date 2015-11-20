@@ -18,77 +18,77 @@ public class Question {
         category = Category.OTHER;
     }
 
-    public Question(String quest, String ans, String fAns1, String fAns2, String fAnsw3, Category cat) {
-        question = quest.intern();
-        answer = ans.intern();
-        fakeAnswer1 = fAns1.intern();
-        fakeAnswer2 = fAns2.intern();
-        fakeAnswer3 = fAnsw3.intern();
+    public Question(String quest, String ans, String fAns1, String fAns2, String fAns3, Category cat) {
+        question = quest;
+        answer = ans;
+        fakeAnswer1 = fAns1;
+        fakeAnswer2 = fAns2;
+        fakeAnswer3 = fAns3;
         category = cat;
     }
 
     public Question(Question q) {
-        question = q.question.intern();
-        answer = q.answer.intern();
-        fakeAnswer1 = q.fakeAnswer1.intern();
-        fakeAnswer2 = q.fakeAnswer2.intern();
-        fakeAnswer3 = q.fakeAnswer3.intern();
+        question = q.question;
+        answer = q.answer;
+        fakeAnswer1 = q.fakeAnswer1;
+        fakeAnswer2 = q.fakeAnswer2;
+        fakeAnswer3 = q.fakeAnswer3;
         category = q.category;
     }
 
-    public void setWholeQuestion(String quest, String ans, String fAns1, String fAns2, String fAnsw3, Category cat) {
-        question = quest.intern();
-        answer = ans.intern();
-        fakeAnswer1 = fAns1.intern();
-        fakeAnswer2 = fAns2.intern();
-        fakeAnswer3 = fAnsw3.intern();
+    public void setWholeQuestion(String quest, String ans, String fAns1, String fAns2, String fAns3, Category cat) {
+        question = quest;
+        answer = ans;
+        fakeAnswer1 = fAns1;
+        fakeAnswer2 = fAns2;
+        fakeAnswer3 = fAns3;
         category = cat;
     }
 
     public void setQuestion(Question q) {
-        question = q.question.intern();
-        answer = q.answer.intern();
-        fakeAnswer1 = q.fakeAnswer1.intern();
-        fakeAnswer2 = q.fakeAnswer2.intern();
-        fakeAnswer3 = q.fakeAnswer3.intern();
+        question = q.question;
+        answer = q.answer;
+        fakeAnswer1 = q.fakeAnswer1;
+        fakeAnswer2 = q.fakeAnswer2;
+        fakeAnswer3 = q.fakeAnswer3;
         category = q.category;
     }
 
-    public void setQuestion(String s) { question = s.intern(); }
+    public void setQuestion(String s) { question = s; }
 
-    public void setAnswer(String s) { answer = s.intern(); }
+    public void setAnswer(String s) { answer = s; }
 
-    public void setFakeAnswer1(String s) { fakeAnswer1 = s.intern(); }
+    public void setFakeAnswer1(String s) { fakeAnswer1 = s; }
 
-    public void setFakeAnswer2(String s) { fakeAnswer2 = s.intern(); }
+    public void setFakeAnswer2(String s) { fakeAnswer2 = s; }
 
-    public void setFakeAnswer3(String s) { fakeAnswer3 = s.intern(); }
+    public void setFakeAnswer3(String s) { fakeAnswer3 = s; }
 
     public void setCategory(Category c) { category = c; }
 
     public String getQuestion()
     {
-        return question.intern();
+        return question;
     }
 
     public String getAnswer()
     {
-        return answer.intern();
+        return answer;
     }
 
     public String getFakeAnswer1()
     {
-        return fakeAnswer1.intern();
+        return fakeAnswer1;
     }
 
     public String getFakeAnswer2()
     {
-        return fakeAnswer2.intern();
+        return fakeAnswer2;
     }
 
     public String getFakeAnswer3()
     {
-        return fakeAnswer3.intern();
+        return fakeAnswer3;
     }
 
     public Category getCategory()
@@ -103,9 +103,9 @@ public class Question {
     public boolean equals(Object obj) {
         if (this.getClass() == obj.getClass()) {
             Question q = (Question) obj;
-            return this.getQuestion().intern().equals(q.getQuestion().intern()) && this.getAnswer().intern().equals(q.getAnswer().intern()) &&
-                    this.getFakeAnswer1().intern().equals(q.getFakeAnswer1().intern()) && this.getFakeAnswer2().intern().equals(q.getFakeAnswer2().intern()) &&
-                    this.getFakeAnswer3().intern().equals(q.getFakeAnswer3().intern()) && this.getCategory() == q.getCategory();
+            return this.getQuestion().equals(q.getQuestion()) && this.getAnswer().equals(q.getAnswer()) &&
+                    this.getFakeAnswer1().equals(q.getFakeAnswer1()) && this.getFakeAnswer2().equals(q.getFakeAnswer2()) &&
+                    this.getFakeAnswer3().equals(q.getFakeAnswer3()) && this.getCategory() == q.getCategory();
         }
         else
             return false;
@@ -118,8 +118,11 @@ public class Question {
      */
     public static Category convertStringToCategory(String s)
     {
-        if (s.intern().equals("HISTORY")) return Category.HISTORY;
-        else if (s.intern().equals("BUSINESSES")) return  Category.BUSINESSES;
+        if (s.equals("HISTORY")) return Category.HISTORY;
+        else if (s.equals("BUSINESSES")) return  Category.BUSINESSES;
+        else if (s.equals("FAMOUS_FIGURES")) return Category.FAMOUS_FIGURES;
+        else if (s.equals("MOVIES")) return Category.MOVIES;
+        else if (s.equals("TV")) return Category.TV;
         else return Category.OTHER;
     }
 }

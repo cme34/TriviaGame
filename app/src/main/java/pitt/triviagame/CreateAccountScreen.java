@@ -8,11 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Cory on 11/6/2015.
  * This page is where a user can create an account
  */
-public class CreateAccountScreen extends Activity {
+public class CreateAccountScreen extends AppCompatActivity {
     Button createAccountButton, cancelButton;
     EditText usernameEditText, createPasswordEditText, confirmPasswordEditText;
     String username, createPassword, confirmPassword;
@@ -57,7 +60,7 @@ public class CreateAccountScreen extends Activity {
      */
     private boolean isCredentialsValid() {
         //Check if any fields are empty
-        if (username.intern().equals("") || createPassword.intern().equals("") || confirmPassword.intern().equals("")) {
+        if (username.equals("") || createPassword.equals("") || confirmPassword.equals("")) {
             Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -100,7 +103,7 @@ public class CreateAccountScreen extends Activity {
             return false;
         }
         //Is username valid length
-        if (username.length() < 6 || username.length() > 24) {
+        if (username.length() < 6 || username.length() > 18) {
             Toast.makeText(getApplicationContext(), "Username must be between 6-24 characters long", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -115,7 +118,7 @@ public class CreateAccountScreen extends Activity {
             return false;
         }
         //Does create password match up with confirm password
-        if (!(createPassword.intern().equals(confirmPassword.intern()))) {
+        if (!(createPassword.equals(confirmPassword))) {
             Toast.makeText(getApplicationContext(), "Password fields do not match", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -127,15 +130,51 @@ public class CreateAccountScreen extends Activity {
      * This method checks to see if the username in the text field is already in the database
      * @return returns true if username is not in the database
      */
-    public boolean isUsernameUnique() { // TODO: DATABASE NEEDED
+    public boolean isUsernameUnique() {
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.RECEIVE_USERNAME_VALID, "?" + username);//Param for checking if username is unique
 
-        return true;
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null)
+            jsonString = task.getJsonString();
+
+        //Create Json object
+        JSONObject jsonFile = null;
+        boolean usernameUnique = false;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get if username is unique from json file
+            usernameUnique = jsonFile.getBoolean("Value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return usernameUnique;
     }
 
     /**
      * This method adds the users credentials to the database
      */
-    private void sendCredentialsToDatabase() { // TODO: DATABASE NEEDED
+    private void sendCredentialsToDatabase() {
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.SEND_CREDENTIALS, "?" + username + "?" + createPassword);//Param for sending credentials
 
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null)
+            jsonString = task.getJsonString();
+
+        //Create Json object
+        JSONObject jsonFile = null;
+        boolean sentSuccessful = false;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get if sending credentials is successful from json file
+            sentSuccessful = jsonFile.getBoolean("Value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

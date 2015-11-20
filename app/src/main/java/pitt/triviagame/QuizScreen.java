@@ -1,6 +1,5 @@
 package pitt.triviagame;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,13 +11,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Random;
 
 /**
  * Created by Cory on 10/8/2015.
  * This is the page of the game where the user answers trivia questions
  */
-public class QuizScreen extends Activity {
+public class QuizScreen extends AppCompatActivity {
     /** The amount of questions that need to be answered, obtained from the server, etc. */
     public static final int QUESTION_LIMIT = 5;
 
@@ -88,6 +90,7 @@ public class QuizScreen extends Activity {
         }
 
         obtainQuestionsFromDatabase();
+        userHasTakenQuiz();
         shuffleQuestions();
 
         points = 0;
@@ -207,17 +210,60 @@ public class QuizScreen extends Activity {
      * This method obtains questions from the database
      * The amount obtained it based on QUESTION_LIMIT
      */
-    private void obtainQuestionsFromDatabase() { // TODO: DATABASE NEEDED
-        Question dummyQuestion1 = new Question("2 + 2 = ?", "4", "1", "2", "3", Category.OTHER);
-        Question dummyQuestion2 = new Question("2 * 2 = ?", "4", "1", "2", "3", Category.OTHER);
-        Question dummyQuestion3 = new Question("2 - 2 = ?", "0", "1", "2", "3", Category.OTHER);
-        Question dummyQuestion4 = new Question("2 / 2 = ?", "1", "4", "2", "3", Category.OTHER);
-        Question dummyQuestion5 = new Question("2 ^ 2 = ?", "4", "1", "2", "3", Category.OTHER);
+    private void obtainQuestionsFromDatabase() {
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.RECEIVE_DAILY_QUESTIONS);//Param for daily questions
 
-        questions[0].setQuestion(dummyQuestion1);
-        questions[1].setQuestion(dummyQuestion2);
-        questions[2].setQuestion(dummyQuestion3);
-        questions[3].setQuestion(dummyQuestion4);
-        questions[4].setQuestion(dummyQuestion5);
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null)
+            jsonString = task.getJsonString();
+
+        //Create Json object
+        JSONObject jsonFile = null;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get all the questions from the json file
+            for (int i = 0; i < jsonFile.getJSONArray("Questions").length(); i++) {
+                JSONObject jsonQuestion = jsonFile.getJSONArray("Questions").getJSONObject(i);
+                //Set questions
+                questions[i].setWholeQuestion(jsonQuestion.getString("questionText"),
+                        jsonQuestion.getString("answer1"), jsonQuestion.getString("answer2"),
+                        jsonQuestion.getString("answer3"), jsonQuestion.getString("answer4"), Category.OTHER);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This method sets that the user has taken the quiz to true, which will prevent them from re-entering the quiz until the next day
+     * This is run when the quiz first starts to prevent the user from looking at the questions and re-entering the quiz
+     */
+    private void userHasTakenQuiz() {
+        //Set user has taken quiz client side
+        User.loggedInUser.setQuizTaken(true);
+
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.SEND_QUIZ_TAKEN, "?" + User.loggedInUser.getUsername());//Param for sending quiz taken
+
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null) {
+            jsonString = task.getJsonString();
+        }
+
+        //Create Json object
+        JSONObject jsonFile = null;
+        boolean sentSuccessful = false;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get if sign in successful from json file
+            sentSuccessful = jsonFile.getBoolean("Value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

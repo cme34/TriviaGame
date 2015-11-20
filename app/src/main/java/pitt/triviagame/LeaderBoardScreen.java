@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Cory on 11/5/2015.
  * This page allows the user to view their points as well as the top five people with the most points
  */
-public class LeaderBoardScreen extends Activity {
+public class LeaderBoardScreen extends AppCompatActivity {
     private TextView currentUserScore;
     private TextView[] usernameView;
     private TextView[] scoreView;
@@ -53,7 +56,29 @@ public class LeaderBoardScreen extends Activity {
     /**
      * This method gets the current leader board results for the database and sets all the text views accordingly
      */
-    private void obtainLeaderBoardValues() { // TODO: DATABASE NEEDED
+    private void obtainLeaderBoardValues() {
+        //Make call to server
+        DatabaseHandler task = new DatabaseHandler();
+        task.execute(DatabaseHandler.RECEIVE_LEADER_BOARD);//Param for leader board
 
+        //Wait for server response
+        String jsonString = null;
+        while (jsonString == null)
+            jsonString = task.getJsonString();
+
+        //Create Json object
+        JSONObject jsonFile = null;
+        try {
+            jsonFile = new JSONObject(jsonString);
+            //Get users on leader board
+            for (int i = 0; i < jsonFile.getJSONArray("Users").length(); i++) {
+                JSONObject jsonUser = jsonFile.getJSONArray("Users").getJSONObject(i);
+                //Set leader board
+                usernameView[i].setText(jsonUser.getString("Username"));
+                scoreView[i].setText(jsonUser.getString("highScore"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

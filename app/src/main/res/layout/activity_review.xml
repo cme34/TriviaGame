@@ -15,36 +15,36 @@
         android:layout_marginBottom="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/reviewScreenQuestion"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:id="@+id/reviewScreenQuestionTextView"
         android:layout_gravity="start" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="18dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/reviewScreenCorrectAnswer"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="18dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/reviewScreenCorrectAnswer"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:id="@+id/reviewScreenCorrectAnswerTextView"
         android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/reviewScreenYourAnswer"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
@@ -58,11 +58,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/reviewScreenYourAnswer"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:id="@+id/reviewScreenYourAnswerTextView"
             android:layout_gravity="center" />
     </LinearLayout>

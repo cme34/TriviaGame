@@ -5,5 +5,5 @@ package pitt.triviagame;
  * A enum of valid category's for questions
  */
 public enum Category {
-    OTHER, HISTORY, BUSINESSES
+    OTHER, HISTORY, BUSINESSES, FAMOUS_FIGURES, MOVIES, TV
 }
