@@ -2,8 +2,6 @@
     <string name="app_name">Pittsburgh Trivia Game</string>
     <string name="action_settings">Settings</string>
 
-    <string name="tempNote">NOTE: Use admin for username and password to sign in. Create account does not fully work yet.</string>
-
     <!--CreateAccount-->
     <string name="createAccountScreenUsername">Username:</string>
     <string name="createAccountScreenCreatePassword">Create Password:</string>
@@ -56,6 +54,7 @@
     <string name="reviewScreenOkayButton">OKAY</string>
 
     <!--Settings-->
+    <string name="SettingsTitle">Settings</string>
     <string name="settingsScreenNotificationSwitch">Daily Reminder Notifications</string>
     <string name="settingsScreenOkayButton">OKAY</string>
 
