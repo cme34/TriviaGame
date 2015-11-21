@@ -22,6 +22,7 @@ public class TriviaGameTest extends ActivityUnitTestCase<TriviaGame> {
     //When the play button is clicked, does it work?
     @MediumTest
     public void testPlayButton(){
+        User.loggedInUser = new User("DannyA", "123", 0, false); //have to simulate a real user to make the main page load
 
         Intent mLaunchIntent = new Intent(getInstrumentation()
                 .getTargetContext(), TriviaGame.class);
@@ -39,6 +40,7 @@ public class TriviaGameTest extends ActivityUnitTestCase<TriviaGame> {
     //When the settings button is clicked, does it work?
     @MediumTest
     public void testSettingsButton(){
+        User.loggedInUser = new User("DannyA", "123", 0, false); //have to simulate a real user to make the main page load
 
         Intent mLaunchIntent = new Intent(getInstrumentation()
                 .getTargetContext(), TriviaGame.class);

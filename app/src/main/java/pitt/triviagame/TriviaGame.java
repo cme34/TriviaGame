@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -20,7 +21,7 @@ import android.widget.Toast;
  * Created by Cory on 10/8/2015.
  * This is the main menu page of the game
  */
-public class TriviaGame extends AppCompatActivity {
+public class TriviaGame extends Activity {
     private Button playButton, leaderBoardButton, quitButton;
     private ImageButton profileButton;
     private TextView usernameView;

@@ -42,6 +42,7 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
 
     //if no answer is selected... then the submit button should not submit
     public void testSubmitButtonNoAnswerChecked(){
+        User.loggedInUser = new User("DannyA", "123", 0, false); //have to simulate a real user to get questions to load
         Intent mLaunchIntent = new Intent(getInstrumentation()
                 .getTargetContext(), QuizScreen.class);
         startActivity(mLaunchIntent, null, null);
@@ -70,6 +71,7 @@ public class QuizScreenTest extends ActivityUnitTestCase<QuizScreen> {
     //selects an answer and submits it for the 5 questions and make sure it submits properly
     @SmallTest
     public void testSubmitButtonAnswerChecked(){
+        User.loggedInUser = new User("DannyA", "123", 0, false); //have to simulate a real user to make the questions load
         Intent mLaunchIntent = new Intent(getInstrumentation()
                 .getTargetContext(), QuizScreen.class);
         startActivity(mLaunchIntent, null, null);

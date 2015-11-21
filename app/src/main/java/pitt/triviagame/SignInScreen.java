@@ -1,5 +1,6 @@
 package pitt.triviagame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,7 @@ import org.json.JSONObject;
  * Created by Cory on 11/6/2015.
  * This is the page were a user can sign in or choose to go to the create account page
  */
-public class SignInScreen extends AppCompatActivity {
+public class SignInScreen extends Activity {
     private Button signInButton, createAccountButton;
     private EditText usernameEditText, passwordEditText;
     private String username, password;

@@ -33,9 +33,9 @@ public class SignInScreenTest extends ActivityUnitTestCase<SignInScreen> {
         startActivity(mLaunchIntent, null, null);
 
         final EditText user = (EditText) getActivity().findViewById(R.id.signInScreenUsernameTextField);
-        user.setText("admin");
+        user.setText("DannyA");
         final EditText pass = (EditText) getActivity().findViewById(R.id.signInScreenPasswordTextField);
-        pass.setText("admin");
+        pass.setText("123");
         final Button submitbutton = (Button) getActivity().findViewById(R.id.signInScreenSignInButton);
         submitbutton.performClick();
 
@@ -55,9 +55,9 @@ public class SignInScreenTest extends ActivityUnitTestCase<SignInScreen> {
         startActivity(mLaunchIntent, null, null);
 
         final EditText user = (EditText) getActivity().findViewById(R.id.signInScreenUsernameTextField);
-        user.setText("admin");
+        user.setText("DannyA");
         final EditText pass = (EditText) getActivity().findViewById(R.id.signInScreenPasswordTextField);
-        pass.setText("admingfd");
+        pass.setText("1234");
         final Button submitbutton = (Button) getActivity().findViewById(R.id.signInScreenSignInButton);
         submitbutton.performClick();
 
