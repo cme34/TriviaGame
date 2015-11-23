@@ -108,11 +108,11 @@ public class QuizScreen extends Activity {
         answerButtons[3] = (RadioButton) findViewById(R.id.quizScreenAnswerButton4);
         submitButton = (Button) findViewById(R.id.quizScreenSubmitButton);
 
-        timeLeftView.setText("60");
+        timeLeftView.setText("30");
         questionView.setText(questions[0].getQuestion());
         shuffleAnswers();
 
-        timer = new QuizTimer(60000, 1000);
+        timer = new QuizTimer(30000, 1000);
         timer.start();
     }
 
@@ -163,10 +163,10 @@ public class QuizScreen extends Activity {
             else
             {
                 //This block of code sets up the next question
-                timeLeftView.setText("60");
+                timeLeftView.setText("30");
                 questionView.setText(questions[currentQuestion].getQuestion());
                 shuffleAnswers();
-                timer = new QuizTimer(60000, 1000);
+                timer = new QuizTimer(30000, 1000);
                 timer.start();
             }
         } else { //Only runs if an answer was not selected AND the submit button was pressed to run the method
