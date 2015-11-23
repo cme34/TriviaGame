@@ -24,7 +24,7 @@ public class NotificationAlarmBR extends BroadcastReceiver {
 
     /** Create notification alarm at specified time and time interval */
     public void SetAlarm(Context context) {
-        int hour = 10;  // TODO: implement to change in settings
+        int hour = 10;
 
         // Calendar setup
         GregorianCalendar calendar = new GregorianCalendar();
@@ -43,7 +43,6 @@ public class NotificationAlarmBR extends BroadcastReceiver {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), (1000 * 60 * 60 * 24), pendingIntent);
     }
 
-    // TODO turn off alarm if notification disabled in settings
     /** Disables the notification alarm */
     public void CancelAlarm(Context context) {
         Intent intent = new Intent(context, NotificationAlarmBR.class);
